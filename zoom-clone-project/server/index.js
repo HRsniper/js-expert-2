@@ -1,16 +1,14 @@
-const http = require("http");
-const socketIO = require("socket.io");
-
-const server = http.createServer((request, response) => {
+const server = require("http").createServer((request, response) => {
   response.writeHead(204, {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
   });
-
   response.end("server Running");
 });
 
-const io = socketIO(server, {
+const socketIo = require("socket.io");
+
+const io = socketIo(server, {
   cors: {
     origin: "*",
     credentials: false
@@ -18,7 +16,7 @@ const io = socketIO(server, {
 });
 
 io.on("connection", (socket) => {
-  // console.log("connection", socket);
+  console.log("connection", socket.id);
 
   socket.on("join-room", (roomId, userId) => {
     console.log(`connected => user: ${userId} room: ${roomId}`);
