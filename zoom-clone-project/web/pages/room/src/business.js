@@ -3,9 +3,10 @@ class Business {
     this.room = room;
     this.media = media;
     this.view = view;
+
     this.socketBuilder = socketBuilder
-      .setOnUserConnected(this.OnUserConnected())
-      .setOnUserDisconnected(this.OnUserDisconnected())
+      .setOnUserConnected(this.onUserConnected)
+      .setOnUserDisconnected(this.onUserDisconnected)
       .build();
 
     this.socketBuilder.emit("join-room", this.room, "test01");
@@ -30,13 +31,13 @@ class Business {
     this.view.renderVideo({ userId, stream, isCurrentId });
   }
 
-  OnUserConnected = function () {
+  onUserConnected = function () {
     return (userId) => {
       console.log("user connected", userId);
     };
   };
 
-  OnUserDisconnected = function () {
+  onUserDisconnected = function () {
     return (userId) => {
       console.log("user disconnected", userId);
     };
