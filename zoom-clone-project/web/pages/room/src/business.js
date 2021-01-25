@@ -5,8 +5,8 @@ class Business {
     this.view = view;
 
     this.socketBuilder = socketBuilder
-      .setOnUserConnected(this.onUserConnected)
-      .setOnUserDisconnected(this.onUserDisconnected)
+      .setOnUserConnected(this.onUserConnected())
+      .setOnUserDisconnected(this.onUserDisconnected())
       .build();
 
     this.socketBuilder.emit("join-room", this.room, "test01");
