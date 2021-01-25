@@ -1,0 +1,31 @@
+{
+  "name": "zoom-clone-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "http-server": "0.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npx http-server --cors .",
+    "test": ""
+  },
+  "keywords": [],
+  "author": "HRsniper",
+  "contributors": [
+    {
+      "name": "erickwendel"
+    },
+    {
+      "name": "Nazariy995"
+    },
+    {
+      "name": "ykhedher"
+    },
+    {
+      "name": "nelsonher019"
+    }
+  ],
+  "license": "MIT"
+}

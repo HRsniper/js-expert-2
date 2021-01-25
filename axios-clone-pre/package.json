@@ -1,0 +1,18 @@
+{
+  "name": "axios-clone-pre",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "npx mocha --parallel test/",
+    "test:dev": "npx mocha -w --exit test/",
+    "test:cov": "npx nyc --check-coverage --instrument --reporter=html --reporter=text npm test"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.3"
+  }
+}
