@@ -11,7 +11,6 @@
     "start": "npx http-server --cors .",
     "test": ""
   },
-  "keywords": [],
   "author": "HRsniper",
   "contributors": [
     {
