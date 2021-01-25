@@ -19,8 +19,8 @@ const onload = () => {
   const view = new View();
   const media = new Media();
 
-  const dependencies = { view, media, room, socketBuilder };
-  Business.initialize(dependencies);
+  const deps = { view, media, room, socketBuilder };
+  Business.initialize(deps);
 };
 
 window.onload = onload;

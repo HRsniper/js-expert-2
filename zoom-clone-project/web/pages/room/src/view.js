@@ -10,13 +10,13 @@ class View {
       video.controls = true;
       video.loop = true;
 
-      Util.sleep(200).then((event) => {
+      Util.sleep(200).then((_) => {
         video.play();
       });
     }
 
     if (srcObject) {
-      video.addEventListener("loadedmetadata", (event) => {
+      video.addEventListener("loadedmetadata", (_) => {
         video.play();
       });
     }

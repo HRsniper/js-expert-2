@@ -3,15 +3,18 @@ class Business {
     this.room = room;
     this.media = media;
     this.view = view;
-    this.socketBuilder = socketBuilder.setOnUserConnected(this.OnUserConnected()).build();
+    this.socketBuilder = socketBuilder
+      .setOnUserConnected(this.OnUserConnected())
+      .setOnUserDisconnected(this.OnUserDisconnected())
+      .build();
 
     this.socketBuilder.emit("join-room", this.room, "test01");
 
     this.currentStream = {};
   }
 
-  static initialize(dependencies) {
-    const instance = new Business(dependencies);
+  static initialize(deps) {
+    const instance = new Business(deps);
     return instance._init();
   }
 
@@ -19,7 +22,7 @@ class Business {
   async _init() {
     this.currentStream = await this.media.getCamera();
     console.log("init", this.currentStream);
-    this.addVideoStream("test1");
+    this.addVideoStream("test01");
   }
 
   addVideoStream(userId, stream = this.currentStream) {
@@ -30,6 +33,12 @@ class Business {
   OnUserConnected = function () {
     return (userId) => {
       console.log("user connected", userId);
+    };
+  };
+
+  OnUserDisconnected = function () {
+    return (userId) => {
+      console.log("user disconnected", userId);
     };
   };
 }
