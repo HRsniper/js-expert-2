@@ -5,6 +5,7 @@ class View {
     const video = document.createElement("video");
     video.src = src;
     video.muted = muted;
+    video.srcObject = srcObject;
 
     if (src) {
       video.controls = true;
@@ -31,16 +32,16 @@ class View {
   }
 
   appendToHtmlTree(userId, video, isCurrentId) {
-    const divVideo = document.createElement("div");
-    divVideo.id = userId;
-    divVideo.classList.add("wrapper");
-    divVideo.append(video);
+    const div = document.createElement("div");
+    div.id = userId;
+    div.classList.add("wrapper");
+    div.append(video);
 
-    const divUserName = document.createElement("div");
-    divUserName.innerText = isCurrentId ? "" : userId;
-    divVideo.append(divUserName);
+    const div2 = document.createElement("div");
+    div2.innerText = isCurrentId ? "" : userId;
+    div.append(div2);
 
     const videoGrid = document.getElementById("video-grid");
-    videoGrid.append(divVideo);
+    videoGrid.append(div);
   }
 }
