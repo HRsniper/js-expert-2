@@ -1,0 +1,23 @@
+{
+  "name": "-server-zoom-clone-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "HRsniper",
+  "contributors": [
+    {
+      "name": "erickwendel"
+    }
+  ],
+  "dependencies": {
+    "socket.io": "^3.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "npx nodemon index.js",
+    "test": ""
+  }
+}

@@ -1,8 +1,11 @@
 class Business {
-  constructor({ room, media, view }) {
+  constructor({ room, media, view, socketBuilder }) {
     this.room = room;
     this.media = media;
     this.view = view;
+    this.socketBuilder = socketBuilder.setOnUserConnected(this.OnUserConnected()).build();
+
+    this.socketBuilder.emit("join-room", this.room, "test01");
 
     this.currentStream = {};
   }
@@ -20,7 +23,13 @@ class Business {
   }
 
   addVideoStream(userId, stream = this.currentStream) {
-    const isCurrentUser = false;
-    this.view.renderVideo({ userId, stream, isCurrentUser });
+    const isCurrentId = false;
+    this.view.renderVideo({ userId, stream, isCurrentId });
   }
+
+  OnUserConnected = function () {
+    return (userId) => {
+      console.log("user connected", userId);
+    };
+  };
 }

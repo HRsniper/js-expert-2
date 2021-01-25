@@ -24,20 +24,20 @@ class View {
     return video;
   }
 
-  renderVideo({ userId, stream = null, url = null, isCurrentUser = false }) {
+  renderVideo({ userId, stream = null, url = null, isCurrentId = false }) {
     const video = this.createVideoElement({ src: url, srcObject: stream });
 
-    this.appendToHtmlTree(userId, video, isCurrentUser);
+    this.appendToHtmlTree(userId, video, isCurrentId);
   }
 
-  appendToHtmlTree(userId, video, isCurrentUser) {
+  appendToHtmlTree(userId, video, isCurrentId) {
     const divVideo = document.createElement("div");
     divVideo.id = userId;
     divVideo.classList.add("wrapper");
     divVideo.append(video);
 
     const divUserName = document.createElement("div");
-    divUserName.innerText = isCurrentUser ? "" : userId;
+    divUserName.innerText = isCurrentId ? "" : userId;
     divVideo.append(divUserName);
 
     const videoGrid = document.getElementById("video-grid");
