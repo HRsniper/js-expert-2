@@ -15,7 +15,8 @@ class Business {
   // privado
   async _init() {
     this.currentStream = await this.media.getCamera();
-    this.addVideoStream("test");
+    console.log("init", this.currentStream);
+    this.addVideoStream("test1");
   }
 
   addVideoStream(userId, stream = this.currentStream) {

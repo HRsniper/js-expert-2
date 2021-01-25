@@ -16,14 +16,9 @@ const onload = () => {
 
   const view = new View();
   const media = new Media();
+
   const dependencies = { room, media, view };
   Business.initialize(dependencies);
-  // view.renderVideo({
-  //   userId: "test",
-  //   isCurrentUser: true,
-  //   url: "https://i.giphy.com/media/26tn33aiTi1jkl6H6/giphy.mp4"
-  // });
-  // view.renderVideo({ userId: "test", url: "https://i.giphy.com/media/26tn33aiTi1jkl6H6/giphy.mp4" });
 };
 
 window.onload = onload;
