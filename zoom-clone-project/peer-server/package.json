@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "npx nodemon index.js",
-    "test": ""
+    "dev": "SET PORT=9000 npm start",
+    "start": "npx peerjs --port $PORT --key peerjs --path /",
+    "dev:win": "npx peerjs --port 9000 --key peerjs --path /"
   },
   "author": "HRsniper",
   "contributors": [
@@ -14,5 +14,8 @@
       "name": "erickwendel"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "peer": "^0.6.1"
+  }
 }
