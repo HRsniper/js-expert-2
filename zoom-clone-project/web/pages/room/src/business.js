@@ -11,6 +11,8 @@ class Business {
     this.currentPeer = {};
 
     this.socket = {};
+
+    this.peers = new Map();
   }
 
   static initialize(deps) {
@@ -84,6 +86,9 @@ class Business {
     return (call, stream) => {
       const callerId = call.peer;
       this.addVideoStream(callerId, stream);
+
+      this.peers.set(callerId, { call });
+      this.view.setParticipants(this.peers.size);
     };
   };
 }
