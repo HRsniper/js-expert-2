@@ -21,14 +21,15 @@ class Business {
 
   // privado
   async _init() {
-    this.currentStream = await this.media.getCamera();
+    //                                    habilitando som
+    this.currentStream = await this.media.getCamera(true);
     console.log("init", this.currentStream);
     this.addVideoStream("test01");
   }
 
   addVideoStream(userId, stream = this.currentStream) {
     const isCurrentId = false;
-    this.view.renderVideo({ userId, stream, isCurrentId });
+    this.view.renderVideo({ userId, muted: false, stream, isCurrentId });
   }
 
   onUserConnected = function () {
