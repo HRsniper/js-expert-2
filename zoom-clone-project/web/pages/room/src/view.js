@@ -67,7 +67,9 @@ class View {
     return () => {
       const isActive = (this.recordingEnabled = !this.recordingEnabled);
 
-      command(this.recordingEnabled);
+      console.log("command", command);
+      // command(this.recordingEnabled);
+      command = this.onRecordClick(this.recordingEnabled);
 
       this.toggleRecordingButtonColor(isActive);
     };

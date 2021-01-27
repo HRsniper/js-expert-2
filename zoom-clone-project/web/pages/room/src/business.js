@@ -13,6 +13,7 @@ class Business {
     this.socket = {};
 
     this.peers = new Map();
+    this.usersRecordings = new Map();
   }
 
   static initialize(deps) {
@@ -25,7 +26,8 @@ class Business {
     this.view.configureRecordButton(this.onRecordPressed.bind(this));
 
     //                                    habilitando som
-    this.currentStream = await this.media.getCamera(true);
+    // this.currentStream = await this.media.getCamera(true);
+    this.currentStream = await this.media.getCamera();
 
     this.socket = this.socketBuilder
       .setOnUserConnected(this.onUserConnected())
@@ -47,6 +49,12 @@ class Business {
   }
 
   addVideoStream(userId, stream = this.currentStream) {
+    const recorderInstance = new Recorder(userId, stream);
+    this.usersRecordings.set(recorderInstance.filename, recorderInstance);
+    if (this.recordingEnabled) {
+      recorderInstance.startRecording();
+    }
+
     const isCurrentId = false;
     this.view.renderVideo({ userId, muted: false, stream, isCurrentId });
   }
@@ -121,5 +129,32 @@ class Business {
     this.recordingEnabled = recordingEnabled;
 
     console.log("pressed recording!", recordingEnabled);
+
+    for (const [key, value] of this.usersRecordings) {
+      if (this.recordingEnabled) {
+        value.startRecording();
+        continue;
+      }
+
+      this.stopRecording(key);
+    }
+  }
+
+  // se um usuário entrar e sair durante uma gravação
+  // precisamos parar as gravações dele
+  async stopRecording(userId) {
+    const usersRecordings = this.usersRecordings;
+
+    for (const [key, value] of usersRecordings) {
+      const isContextUser = key.includes(userId);
+      if (!isContextUser) continue;
+
+      const rec = value;
+      const isRecordingActive = rec.recordingActive;
+
+      if (!isRecordingActive) continue;
+
+      await rec.stopRecording();
+    }
   }
 }
