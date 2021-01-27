@@ -22,6 +22,8 @@ class Business {
 
   // privado
   async _init() {
+    this.view.configureRecordButton(this.onRecordPressed.bind(this));
+
     //                                    habilitando som
     this.currentStream = await this.media.getCamera(true);
 
@@ -113,5 +115,11 @@ class Business {
     return (call) => {
       console.log("call close!", call.peer);
     };
+  }
+
+  onRecordPressed(recordingEnabled) {
+    this.recordingEnabled = recordingEnabled;
+
+    console.log("pressed recording!", recordingEnabled);
   }
 }
