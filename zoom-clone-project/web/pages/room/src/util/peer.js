@@ -49,17 +49,9 @@ class PeerBuilder {
   }
 
   _prepareCallEvent(call) {
-    call.on("stream", (stream) => {
-      this.onPeerStreamReceived(call, stream);
-    });
-
-    call.on("error", (error) => {
-      this.onCallError(call, error);
-    });
-
-    call.on("close", (_) => {
-      this.onCallClose(call);
-    });
+    call.on("stream", (stream) => this.onPeerStreamReceived(call, stream));
+    call.on("error", (error) => this.onCallError(call, error));
+    call.on("close", (_) => this.onCallClose(call));
 
     this.onCallReceived(call);
   }
@@ -91,11 +83,11 @@ class PeerBuilder {
     peer.on("error", this.onError);
     peer.on("call", this._prepareCallEvent.bind(this));
 
-    return new Promise((resolve) => {
+    return new Promise((resolve) =>
       peer.on("open", (id) => {
         this.onConnectionOpened(peer);
         return resolve(peer);
-      });
-    });
+      })
+    );
   }
 }

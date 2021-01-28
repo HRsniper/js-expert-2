@@ -56,7 +56,8 @@ class Business {
     }
 
     const isCurrentId = false;
-    this.view.renderVideo({ userId, muted: false, stream, isCurrentId });
+    // this.view.renderVideo({ userId, muted: false, stream, isCurrentId });
+    this.view.renderVideo({ userId, stream, isCurrentId });
   }
 
   onUserConnected() {
@@ -84,7 +85,7 @@ class Business {
 
   onPeerError() {
     return (error) => {
-      console.log("error on peer!", error);
+      console.error("error on peer!", error);
     };
   }
 
@@ -107,7 +108,6 @@ class Business {
     return (call, stream) => {
       const callerId = call.peer;
       this.addVideoStream(callerId, stream);
-
       this.peers.set(callerId, { call });
       this.view.setParticipants(this.peers.size);
     };
@@ -122,13 +122,12 @@ class Business {
 
   onPeerCallClose() {
     return (call) => {
-      console.log("call close!", call.peer);
+      console.log("call closed!", call.peer);
     };
   }
 
   onRecordPressed(recordingEnabled) {
     this.recordingEnabled = recordingEnabled;
-
     console.log("pressed recording!", recordingEnabled);
 
     for (const [key, value] of this.usersRecordings) {
@@ -148,6 +147,7 @@ class Business {
 
     for (const [key, value] of usersRecordings) {
       const isContextUser = key.includes(userId);
+
       if (!isContextUser) continue;
 
       const rec = value;

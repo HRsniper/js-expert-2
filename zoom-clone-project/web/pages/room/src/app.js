@@ -1,9 +1,9 @@
 const onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const room = urlParams.get("room");
-  console.log("this is the room: ", room);
+  console.log("this is the room", room);
 
-  const socketUrl = "http://localhost:3000/";
+  const socketUrl = "http://localhost:3000";
   const socketBuilder = new SocketBuilder({ socketUrl });
 
   const peerConfig = Object.values({

@@ -13,15 +13,11 @@ class View {
       video.controls = true;
       video.loop = true;
 
-      Util.sleep(200).then((_) => {
-        video.play();
-      });
+      Util.sleep(200).then((_) => video.play());
     }
 
     if (srcObject) {
-      video.addEventListener("loadedmetadata", (_) => {
-        video.play();
-      });
+      video.addEventListener("loadedmetadata", (_) => video.play());
     }
 
     return video;
@@ -48,7 +44,7 @@ class View {
   }
 
   setParticipants(count) {
-    const myself = 0;
+    const myself = 1;
     const participants = document.getElementById("participants");
     participants.innerHTML = count + myself;
   }
@@ -67,16 +63,12 @@ class View {
     return () => {
       const isActive = (this.recordingEnabled = !this.recordingEnabled);
 
-      console.log("command", command);
-      // command(this.recordingEnabled);
-      command = this.onRecordClick(this.recordingEnabled);
-
+      command(this.recordingEnabled);
       this.toggleRecordingButtonColor(isActive);
     };
   }
 
   configureRecordButton(command) {
-    const recorderBtn = document.getElementById("record");
-    recorderBtn.addEventListener("click", this.onRecordClick(recorderBtn));
+    this.recorderBtn.addEventListener("click", this.onRecordClick(command));
   }
 }
