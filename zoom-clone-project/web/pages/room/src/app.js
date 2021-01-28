@@ -9,8 +9,10 @@ const onload = () => {
   const peerConfig = Object.values({
     id: undefined,
     config: {
-      port: 9000,
-      host: "localhost",
+      // port: 9000,
+      // host: "localhost",
+      host: "nameless-everglades-36227.herokuapp.com/",
+      secure: true,
       path: "/"
     }
   });
