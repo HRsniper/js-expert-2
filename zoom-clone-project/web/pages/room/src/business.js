@@ -156,6 +156,16 @@ class Business {
       if (!isRecordingActive) continue;
 
       await rec.stopRecording();
+      this.playRecordings(key);
     }
+  }
+
+  playRecordings(userId) {
+    const user = this.usersRecordings.get(userId);
+    const videosUrls = user.getAllVideoUrls();
+
+    videosUrls.map((url) => {
+      this.view.renderVideo({ url, userId });
+    });
   }
 }
