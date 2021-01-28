@@ -24,6 +24,7 @@ class Business {
   // privado
   async _init() {
     this.view.configureRecordButton(this.onRecordPressed.bind(this));
+    this.view.configureLeaveButton(this.onLeavePressed.bind(this));
 
     //                                    habilitando som
     // this.currentStream = await this.media.getCamera(true);
@@ -167,5 +168,9 @@ class Business {
     videosUrls.map((url) => {
       this.view.renderVideo({ url, userId });
     });
+  }
+
+  onLeavePressed() {
+    console.log("leave pressed!");
   }
 }

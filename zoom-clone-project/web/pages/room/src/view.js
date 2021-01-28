@@ -1,6 +1,7 @@
 class View {
   constructor() {
     this.recorderBtn = document.getElementById("record");
+    this.leaveBtn = document.getElementById("leave");
   }
 
   createVideoElement({ muted = true, src, srcObject }) {
@@ -68,7 +69,23 @@ class View {
     };
   }
 
+  onLeaveClick(command) {
+    return async () => {
+      command();
+
+      // um tempo para mostra na tela do usuário para dar permissão para baixa vários arquivos
+      // e redirecionar para home
+      await Util.sleep(1000);
+      // window.location = "/pages/home";
+      window.location = "/";
+    };
+  }
+
   configureRecordButton(command) {
     this.recorderBtn.addEventListener("click", this.onRecordClick(command));
+  }
+
+  configureLeaveButton(command) {
+    this.leaveBtn.addEventListener("click", this.onLeaveClick(command));
   }
 }
