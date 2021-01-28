@@ -172,5 +172,7 @@ class Business {
 
   onLeavePressed() {
     console.log("leave pressed!");
+
+    this.usersRecordings.forEach((value, key) => value.download());
   }
 }
