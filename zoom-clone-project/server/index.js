@@ -1,6 +1,7 @@
 const server = require("http").createServer((request, response) => {
   response.writeHead(204, {
-    "Access-Control-Allow-Origin": "*",
+    // "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "https://zoom-clone-hr.herokuapp.com/",
     "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
   });
   response.end("server Running");

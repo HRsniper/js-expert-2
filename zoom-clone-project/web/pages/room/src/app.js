@@ -3,7 +3,8 @@ const onload = () => {
   const room = urlParams.get("room");
   console.log("this is the room", room);
 
-  const socketUrl = "http://localhost:3000";
+  // const socketUrl = "http://localhost:3000";
+  const socketUrl = "https://tranquil-ridge-78588.herokuapp.com";
   const socketBuilder = new SocketBuilder({ socketUrl });
 
   const peerConfig = Object.values({
@@ -11,7 +12,7 @@ const onload = () => {
     config: {
       // port: 9000,
       // host: "localhost",
-      host: "nameless-everglades-36227.herokuapp.com/",
+      host: "floating-gorge-40151.herokuapp.com",
       secure: true,
       path: "/"
     }

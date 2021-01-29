@@ -1,4 +1,4 @@
-# Projeto base da JS Expert Week 2.0
+# Projeto da JS Expert Week 2.0
 
 - Acesse o [home](./pages/home/index.html) para acessar a home page
 - Acesse o [room](./page/room/index.html) uma room específica
@@ -10,3 +10,7 @@
 ## Room
 
 ![room](.github/images/room.png)
+
+<br>
+
+## Resultado final : https://zoom-clone-hr.herokuapp.com/
