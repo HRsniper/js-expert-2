@@ -10,7 +10,3 @@
 ## Room
 
 ![room](.github/images/room.png)
-
-<br>
-
-## Resultado final : https://zoom-clone-hr.herokuapp.com/
